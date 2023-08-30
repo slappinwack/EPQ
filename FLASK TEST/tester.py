@@ -1,22 +1,22 @@
 from datetime import datetime
 from flask import Flask, render_template, url_for, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import backref
+#from sqlalchemy.orm import backref
 from forms import RegistrationForm, LoginForm
 
-db = SQLAlchemy()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '433ca33a3bffb16ca5bfb7563fb05ab6'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-db.init_app(app)
+db = SQLAlchemy(app)
+#db.init_app(app)
 
 #app.app_context().push()
 #db.create_all()
 #SQLAlchemy.orm.Session.expire_on_commit = False
 
-Session = sessionmaker(app)
-session = Session()
-session.expire_on_commit=False
+#Session = sessionmaker(app)
+#session = Session()
+#session.expire_on_commit=False
 
 
 class User(db.Model):
